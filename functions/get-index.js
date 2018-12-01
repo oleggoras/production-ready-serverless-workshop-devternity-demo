@@ -19,6 +19,7 @@ function loadHtml () {
 }
 
 const getRestaurants = async () => {
+  console.log(restaurantsApiRoot)
   const httpReq = http.get(restaurantsApiRoot)
   return (await httpReq).body
 };
