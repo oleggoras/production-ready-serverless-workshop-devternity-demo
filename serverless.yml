@@ -8,8 +8,10 @@ provider:
   runtime: nodejs8.10
   stage: dev
   region: eu-west-1
-  tags:
-    TEAM: test
+#  tags:
+#    TEAM: test
+  environment:
+    log_level: ${self:custom.logLevel.${self:custom.stage}, self:custom.logLevel.default}
 
   iamRoleStatements:
     - Effect: Allow
@@ -28,6 +30,11 @@ provider:
       Action: sns:Publish
       Resource: 
         Ref: restaurantNotificationTopic
+custom:
+  stage: ${opt:stage, self:provider.stage}
+  logLevel:
+    prod: INFO
+    default: DEBUG
 
 functions:
   get-index:
