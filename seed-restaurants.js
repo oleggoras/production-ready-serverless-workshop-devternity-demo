@@ -49,7 +49,7 @@ let restaurants = [
 ];
 
 const getTableName = async () => {
-  return `restaurants-${STAGE}-yancui`
+  return `restaurants-${STAGE}-oleg`
 }
 
 const run = async () => {

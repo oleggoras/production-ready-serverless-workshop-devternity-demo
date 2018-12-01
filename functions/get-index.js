@@ -21,7 +21,7 @@ function loadHtml () {
 const getRestaurants = async () => {
   const httpReq = http.get(restaurantsApiRoot)
   return (await httpReq).body
-}
+};
 
 module.exports.handler = async (event, context) => {
   const template = loadHtml()
@@ -32,7 +32,7 @@ module.exports.handler = async (event, context) => {
     restaurants,
     searchUrl: `${restaurantsApiRoot}/search`,
     placeOrderUrl: `${ordersApiRoot}`
-  }
+  };
   const html = Mustache.render(template, view)
   const response = {
     statusCode: 200,
@@ -40,7 +40,7 @@ module.exports.handler = async (event, context) => {
       'content-type': 'text/html; charset=UTF-8'
     },
     body: html
-  }
+  };
 
   return response
-}
+};
